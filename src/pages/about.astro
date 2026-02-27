@@ -1,9 +1,6 @@
 ---
-
-import '../styles/global.css';
-
-const pageTitle ="Sobre mi";
-
+import BaseLayout from "../layouts/BaseLayout.astro";
+const pageTitle = "Sobre mi";
 
 const identity={
  firstName: "Sara",
@@ -16,7 +13,7 @@ const identity={
 const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Redacción de documentos"];
 
 const happy= true;
-const finished =false;
+const finished =true;
 const goal =3;
 
 const skillColor = "crimson";
@@ -24,36 +21,9 @@ const fontWeight = "bold";
 const textCase = "uppercase";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
 
-        <style define:vars={{skillColor,fontWeight,textCase}}>
-            h1{
-                color:rgba(92, 4, 92, 0.785);
-                font-size: 4rem;
-            }
-            .skill{
-                color: green;
-                color: var(--skillColor);
-                font-weight: var(--fontWeight);
-                text-transform: var(--textCase);
-            }
-        </style>
-
-	</head>
-	<body>
-        <a href="/">Inicio</a>
-        <a href="/about/">Sobre mi</a>
-        <a href="/blog/">Blog</a>
-		<h1>Mi sitio Astro</h1>
-		<h1>{pageTitle}</h1>
-
+	<BaseLayout pageTitle={pageTitle}>
+		
 
         <p>He aqui unos datos sobre mi</p>
         <ul>
@@ -75,5 +45,18 @@ const textCase = "uppercase";
 
        {goal === 3 ? <p>Mi objetivo es terminar en 3 días.</p> : <p>Mi objetivo no son 3 días.</p>}
 
-	</body>
-</html>
+
+       {/* 2. Los estilos se mueven AQUÍ, dentro del cuerpo, con is:global */}
+        <style is:global define:vars={{ skillColor, fontWeight, textCase }}>
+            h1 {
+            color: purple;
+            font-size: 4rem;
+            }
+            .skill {
+            color: var(--skillColor);
+            font-weight: var(--fontWeight);
+            text-transform: var(--textCase);
+            }
+        </style>
+    </BaseLayout>
+     

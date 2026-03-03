@@ -4,6 +4,8 @@ title: 'Mi primera publicación en el blog'
 pubDate: 2026-02-2024
 description: 'Esta es mi primera publicación'
 author: 'Sarasuadi'
+authorBio: 'Desarrollador en formación y entusiasta de las islas de Astro.'
+authorAvatar: 'https://avatars.githubusercontent.com/u/1234567'
 image:
     url: 'https://docs.astro.build/assets/rose.webp'
     alt: 'El logotipo de Astro sobre un fondo oscuro con un brillo rosado.'

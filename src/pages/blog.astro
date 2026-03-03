@@ -1,14 +1,106 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro"
-import BlogPost from '../components/BlogPost.astro'
-const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
-const pageTitle = "Blog";
+import BaseLayout from '../layouts/BaseLayout.astro';
+const allPosts = await Astro.glob('./posts/*.md');
+const pageTitle = "Mi Blog de Aprendizaje";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-    <p>Aquí es donde publicaré sobre mi viaje de aprendizaje Astro.</p>
+  <p class="intro-text">Aquí es donde publicaré sobre mi viaje de aprendizaje Astro.</p>
+  
+  <div class="posts-grid">
+    {allPosts.map((post) => (
+      <a href={post.url} class="post-card">
+        <div class="post-image">
+          <img src={post.frontmatter.image.url} alt={post.frontmatter.image.alt} />
+        </div>
+        <div class="post-content">
+          <span class="post-date">{post.frontmatter.pubDate.toString().slice(0,10)}</span>
+          <h2 class="post-title">{post.frontmatter.title}</h2>
+          <p class="post-description">{post.frontmatter.description}</p>
+          <span class="post-link">Leer guía completa →</span>
+        </div>
+      </a>
+    ))}
+  </div>
+</BaseLayout>
 
-    <ul>
-     {allPosts.map((post: any) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
-    </ul>
-</BaseLayout>   
+<style>
+  .intro-text {
+    text-align: center;
+    color: #64748b;
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  /* Contenedor tipo Grid (como el de Factus) */
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    padding: 1rem 0;
+  }
+
+  /* Estilo de la Tarjeta */
+  .post-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .post-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.1);
+    border-color: #6366f1; /* Color azul de acento */
+  }
+
+  .post-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .post-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .post-date {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .post-title {
+    margin: 0.5rem 0;
+    font-size: 1.25rem;
+    color: #1e293b;
+    line-height: 1.4;
+  }
+
+  .post-description {
+    font-size: 0.95rem;
+    color: #64748b;
+    margin-bottom: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .post-link {
+    margin-top: auto;
+    color: #6366f1;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+</style>

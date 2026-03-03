@@ -1,0 +1,219 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "Introduccion";
+const inThisPageSections = [
+  { text: "Sinopsis", href: "#sinopsis" },
+  { text: "Características principales", href: "#caracteristicas" },
+  { text: "Beneficios", href: "#beneficios" },
+];
+
+---
+<BaseLayout pageTitle={pageTitle}>
+    {/* Estructura principal con barra lateral */}
+  <div class="doc-container">
+    {/* Contenido principal de la documentación */}
+    <article class="doc-content">
+   
+
+      {/* Sección: Sinopsis */}
+      <section id="sinopsis" class="doc-section">
+        <p>
+          La <strong>API Factus</strong> está diseñada para facilitar la integración de soluciones de facturación electrónica en Colombia. 
+          Proporciona a los desarrolladores las herramientas necesarias para crear, validar y gestionar documentos electrónicos, como facturas y notas crédito, cumpliendo con las normativas establecidas por la DIAN.
+        </p>
+      </section>
+
+      {/* Sección: Características principales */}
+      <section id="caracteristicas" class="doc-section">
+        <h2>Características principales</h2>
+        <ul>
+          <li><strong>Autenticación:</strong> Implementa un sistema de autenticación robusto que garantiza la seguridad en el acceso y manejo de la información.</li>
+          <li><strong>Gestión de facturas:</strong> Permite la creación, validación, consulta y descarga de facturas electrónicas en formatos PDF y XML.</li>
+          <li><strong>Manejo de notas crédito:</strong> Facilita la emisión y gestión de notas crédito, incluyendo su validación y descarga en los formatos mencionados.</li>
+          <li><strong>Rangos de numeración:</strong> Ofrece funcionalidades para la administración de rangos de numeración, esenciales para el control de documentos fiscales.</li>
+          <li><strong>Tablas de referencia:</strong> Proporciona acceso a tablas de referencia necesarias para la correcta emisión de documentos, como tributos, unidades de medida y municipios.</li>
+        </ul>
+      </section>
+
+      {/* Sección: Beneficios */}
+      <section id="beneficios" class="doc-section">
+        <h2>Beneficios</h2>
+        <ul>
+          <li><strong>Cumplimiento normativo:</strong> Asegura que los documentos electrónicos generados cumplan con las regulaciones de la DIAN.</li>
+          <li><strong>Integración sencilla:</strong> Su diseño facilita la incorporación en diversas plataformas y lenguajes de programación.</li>
+          <li><strong>Eficiencia operativa:</strong> Automatiza procesos de facturación, reduciendo errores y tiempos de procesamiento.</li>
+        </ul>
+      </section>
+    </article>
+
+    {/* Barra lateral "En esta página" */}
+    <aside class="on-this-page">
+      <div class="sticky-nav">
+        <h3>En esta página</h3>
+        <nav>
+          <ul>
+            {inThisPageSections.map((section) => (
+              <li>
+                <a href={section.href}>{section.text}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </aside>
+  </div>
+
+</BaseLayout>
+
+
+
+<style>
+  /* Estructura del Contenedor con Barra Lateral */
+  .doc-container {
+    display: flex;
+    flex-wrap: wrap; /* Importante para la responsividad */
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  /* Contenido Principal (Documentación) */
+  .doc-content {
+    flex: 3; /* Toma más espacio */
+    min-width: 0; /* Previene el desbordamiento de contenido en pantallas pequeñas */
+  }
+
+  /* Encabezado Principal */
+  .doc-header {
+    border-bottom: 2px solid #eaecef;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: 0.9rem;
+    color: var(--primary-color, #00539F);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  h1 {
+    font-family: var(--font-heading, 'Lora', serif);
+    font-size: 3rem;
+    color: var(--primary-color, #00539F);
+    margin: 0;
+  }
+
+  /* Secciones de Documentación */
+  .doc-section {
+    margin-bottom: 3rem;
+  }
+
+  h2 {
+    font-family: var(--font-heading, 'Lora', serif);
+    font-size: 2.2rem;
+    color: var(--primary-color, #00539F);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eaecef;
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color, #333);
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-color, #333);
+    list-style-type: disc;
+    margin-left: 1.5rem;
+  }
+
+  li {
+    margin-bottom: 0.8rem;
+  }
+
+  /* Barra Lateral "En esta página" */
+  .on-this-page {
+    flex: 1; /* Toma menos espacio */
+    position: relative;
+    padding-top: 1rem;
+  }
+
+  .sticky-nav {
+    position: sticky; /* Se queda quieto al hacer scroll */
+    top: 2rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .on-this-page ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-left: 2px solid #eaecef;
+  }
+
+  .on-this-page li {
+    margin: 0;
+  }
+
+  .on-this-page a {
+    display: block;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    text-decoration: none;
+    color: #666;
+    transition: all 0.2s ease;
+    border-left: 2px solid transparent; /* Para el efecto active */
+    margin-left: -2px; /* Alineación perfecta con el borde izquierdo */
+  }
+
+  .on-this-page a:hover {
+    color: var(--primary-color, #00539F);
+  }
+
+  .on-this-page a.active {
+    font-weight: bold;
+    color: var(--primary-color, #00539F);
+    border-left: 2px solid var(--primary-color, #00539F);
+  }
+
+  /* Responsividad */
+  @media (max-width: 991px) {
+    .doc-container {
+      flex-direction: column-reverse; /* La barra lateral sube */
+    }
+
+    .on-this-page {
+      width: 100%;
+      border-top: 1px solid #eaecef;
+      border-bottom: 1px solid #eaecef;
+      margin-top: -1rem;
+      padding: 1.5rem;
+      background-color: #F8FCFD;
+    }
+
+    .sticky-nav {
+      position: static;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+    }
+  }
+</style>
+

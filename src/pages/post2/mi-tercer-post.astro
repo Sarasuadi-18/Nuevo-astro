@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export const frontmatter = {
+    title: "Aventuras",
+    pubDate: "2026-03-10",
+    description: "Sobre aventuras",
+    tags:["astro", "bloguear", "aprender en público", "aventuras"],
+    image: {
+        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkJw1zJzMrNzDlS9hcMmvV4bcurvSSUIIt9A&s",
+        alt: "Logo"
+    },
+    author: 'Sarasuadi',
+    authorBio: 'Desarrollador en formación y entusiasta de Astro.',
+    authorAvatar: 'https://avatars.githubusercontent.com/u/1234567'
+}
+import AuthorCard from '../../components/AuthorCard.astro';
+---
+
+
+<BaseLayout pageTitle={frontmatter.title}>
+
+<p>{frontmatter.pubDate.toString().slice(0,10)}</p>
+  <p><em>{frontmatter.description}</em></p>
+<img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+ 
+  <div class="tags">
+    {frontmatter.tags.map((tag) => (
+      <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
+    ))}
+  </div>
+  <h2>Las aventuras</h2>
+  <p>
+   Una aventura es una experiencia emocionante, inusual y a menudo arriesgada que implica exploración 
+   o peligro. Se refiere tanto a sucesos extraordinarios, lances o peripecias, como a relaciones amorosas pasajeras. Ejemplos incluyen viajes inexplorados, deportes extremos o novelas de aventuras. Sinónimos incluyen andanza, 
+   incidente, riesgo, peripecia y romance.
+  </p>
+
+  <AuthorCard 
+    name={frontmatter.author} 
+    bio={frontmatter.authorBio} 
+    avatar={frontmatter.authorAvatar}
+    twitter="astro_dev" 
+  />
+
+</BaseLayout>
+
+
+
+<style>
+  a {
+    color: #00539F;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    margin: 0.25em;
+    border: dotted 1px #a1a1a1;
+    border-radius: .5em;
+    padding: .5em 1em;
+    font-size: 1.15em;
+    background-color: #F8FCFD;
+  }
+</style>

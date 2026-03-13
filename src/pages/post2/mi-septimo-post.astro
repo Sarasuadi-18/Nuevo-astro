@@ -1,0 +1,41 @@
+---
+import BasePost from "../../layouts/BasePost.astro";
+
+export const frontmatter = {
+  title: "Nuevo Factucom",
+  pubDate: "2026-03-12",
+  description: "Información sobre Factucom",
+  tags: ["factucom","bloguear","aprender en público","conocimiento","factura","sistema"],
+  image: {
+    url: "https://factucom.mx/assets/components/images/factucom_og.png",
+    alt: "Logo"
+  },
+  author: "Sarasuadi",
+  authorBio: "Desarrollador en formación y entusiasta de Astro.",
+  authorAvatar: "https://avatars.githubusercontent.com/u/1234567"
+};
+---
+
+<BasePost frontmatter={frontmatter}>
+
+<h2>Factucom</h2>
+
+<p>
+Factucom es una plataforma mexicana diseñada para la emisión y gestión de
+facturas electrónicas (CFDI). Es lo que se conoce como un sistema de
+facturación en la nube, pensado principalmente para freelancers, pequeñas
+empresas (PyMEs) y personas físicas que necesitan cumplir con sus
+obligaciones ante el SAT sin complicaciones técnicas.
+</p>
+
+<h3>¿Para qué sirve?</h3>
+
+<p>Su función principal es generar comprobantes fiscales digitales (versión 4.0 actualmente). Te permite: </p>
+
+<ul>
+    <li>Crear facturas de servicios o productos.</li>
+    <li>Generar complementos de pago (cuando te pagan una factura a plazos o después de emitirla).</li>
+    <li>Hacer facturas globales (para las ventas al público en general donde no te pidieron factura individual).</li>
+    <li>Gestionar notas de crédito y cancelaciones.</li>
+</ul>
+</BasePost>

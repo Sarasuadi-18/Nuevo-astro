@@ -1,0 +1,190 @@
+---
+import BasePost from "../../layouts/BasePost.astro";
+
+export const frontmatter = {
+  title: "¿Qué es Factucom y para qué sirve?",
+  pubDate: "2026-03-12",
+  description: "Explicación sencilla de qué es Factucom, cómo funciona y qué se necesita para usarlo.",
+  tags:["factucom","facturación","CFDI","SAT","sistemas"],
+  image: {
+    url: "https://factucom.mx/assets/components/images/factucom_og.png",
+    alt: "Logo Factucom"
+  },
+  author: "Sarasuadi",
+  authorBio: "Desarrollador en formación y entusiasta de Astro.",
+  authorAvatar: "https://avatars.githubusercontent.com/u/1234567"
+};
+
+const headings = [
+  { id: "que-es", text: "¿Qué es Factucom?" },
+  { id: "para-que-sirve", text: "¿Para qué sirve?" },
+  { id: "como-funciona", text: "¿Cómo funciona?" },
+  { id: "que-necesitas", text: "¿Qué necesitas para usarlo?" }
+];
+---
+
+<BasePost frontmatter={frontmatter}>
+
+    <nav class="toc">
+  <h3>Contenido</h3>
+  <ul>
+    {headings.map((h)=>(
+      <li>
+        <a href={`#${h.id}`}>{h.text}</a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<h2 id="que-es">¿Qué es Factucom?</h2>
+
+
+<p>
+Factucom es una plataforma mexicana diseñada para la emisión y gestión de facturas electrónicas (CFDI). 
+Es lo que se conoce como un sistema de facturación en la nube, pensado principalmente para freelancers, pequeñas empresas (PyMEs)
+ y 
+personas físicas que necesitan cumplir con sus obligaciones ante el SAT sin complicaciones técnicas.
+</p>
+
+<div class="info-box">
+💡 Factucom facilita la generación de facturas electrónicas ofreciendo
+una interfaz más sencilla que el portal tradicional del SAT.
+</div>
+
+
+<p>
+A continuación se explican sus puntos principales de forma sencilla.
+</p>
+
+<h2 id="para-que-sirve">¿Para qué sirve?</h2>
+
+<p>
+Su función principal es generar comprobantes fiscales digitales
+(actualmente en la versión 4.0). Con Factucom puedes:
+</p>
+
+<ul>
+<li>Crear facturas de productos o servicios.</li>
+<li>Generar <strong>complementos de pago</strong> cuando una factura se paga después o en parcialidades.</li>
+<li>Emitir <strong>facturas globales</strong> para ventas al público en general.</li>
+<li>Gestionar <strong>notas de crédito</strong> y cancelaciones.</li>
+</ul>
+
+<h2 id="como-funciona">¿Cómo funciona?</h2>
+
+<p>
+A diferencia de generar facturas directamente en el portal del SAT,
+Factucom ofrece una interfaz más sencilla y rápida de usar.
+</p>
+
+<ul>
+<li>
+<strong>Almacenamiento:</strong> guarda la información de clientes y
+productos para reutilizarla en futuras facturas.
+</li>
+
+<li>
+<strong>Nube:</strong> no necesitas instalar ningún programa,
+solo acceder desde el navegador con tu usuario y contraseña.
+</li>
+
+<li>
+<strong>Validación:</strong> el sistema se encarga de "timbrar"
+la factura mediante un PAC autorizado por el SAT, lo que la
+convierte en un documento fiscal válido.
+</li>
+</ul>
+<h2 id="que-necesitas">¿Qué necesitas para usarlo?</h2>
+
+<p>
+Para configurar Factucom (o cualquier sistema de facturación en México),
+necesitas contar con la siguiente información:
+</p>
+
+<ul>
+<li><strong>RFC</strong></li>
+<li><strong>e.firma</strong> vigente</li>
+<li>
+<strong>CSD (Certificado de Sello Digital)</strong>, que se usa
+específicamente para firmar facturas electrónicas
+</li>
+<li><strong>Régimen fiscal</strong> (por ejemplo RESICO o Actividad Empresarial)</li>
+</ul>
+
+<h2>Ejemplo de datos fiscales</h2>
+
+<pre><code>
+RFC: ABC123456XYZ
+Régimen fiscal: RESICO
+Uso CFDI: G03 - Gastos en general
+</code></pre>
+
+
+<h2>Conclusión</h2>
+
+<p>
+Factucom facilita la generación de facturas electrónicas al ofrecer
+una plataforma sencilla, accesible desde la nube y compatible con
+los requisitos fiscales actuales del SAT.
+</p>
+
+
+<section class="related">
+
+<h3>Artículos relacionados</h3>
+
+<ul>
+<li><a href="/post2/que-es-un-cfdi">¿Qué es un CFDI?</a></li>
+
+</ul>
+
+</section>
+
+</BasePost>
+
+
+
+<style>
+
+.toc{
+  background:#f7f7f7;
+  padding:16px;
+  border-radius:8px;
+  margin-bottom:30px;
+}
+
+.toc ul{
+  padding-left:20px;
+}
+
+.toc a{
+  text-decoration:none;
+}
+
+.info-box{
+  background:#eef6ff;
+  border-left:4px solid #2b7cff;
+  padding:16px;
+  margin:20px 0;
+  border-radius:6px;
+}
+
+pre{
+  background:#1e1e1e;
+  color:white;
+  padding:16px;
+  border-radius:8px;
+  overflow:auto;
+}
+
+.related{
+  margin-top:40px;
+}
+
+.related ul{
+  padding-left:20px;
+}
+
+</style>
+
+

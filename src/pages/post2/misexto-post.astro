@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export const frontmatter = {
+    title: "Factucom",
+    pubDate: "2026-03-13",
+    description: "Informacion sobre Factucom",
+    tags:["factucom", "bloguear", "aprender en público", "conocimiento","factura", "sistema"],
+    image: {
+        url: "https://factucom.mx/assets/components/images/factucom_og.png",
+        alt: "Logo"
+    },
+    author: 'Sarasuadi',
+    authorBio: 'Desarrollador en formación y entusiasta de Astro.',
+    authorAvatar: 'https://avatars.githubusercontent.com/u/1234567'
+}
+import AuthorCard from '../../components/AuthorCard.astro';
+---
+
+
+<BaseLayout pageTitle={frontmatter.title}>
+   
+
+<p>{frontmatter.pubDate.toString().slice(0,10)}</p>
+  <p><em>{frontmatter.description}</em></p>
+<img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+ 
+  <div class="tags">
+    {frontmatter.tags.map((tag) => (
+      <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
+    ))}
+  </div>
+  <h2>Factucom</h2>
+  <p>
+   Factucom es una plataforma mexicana diseñada para la emisión y gestión de facturas electrónicas (CFDI). Es lo que se conoce como un sistema de facturación en la nube, pensado principalmente para freelancers, pequeñas empresas (PyMEs) y personas físicas que necesitan 
+   cumplir con sus obligaciones ante el SAT sin complicaciones técnicas.
+  </p>
+
+  <AuthorCard 
+    name={frontmatter.author} 
+    bio={frontmatter.authorBio} 
+    avatar={frontmatter.authorAvatar}
+    twitter="astro_dev" 
+  />
+
+</BaseLayout>
+
+
+
+<style>
+  a {
+    color: #00539F;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    margin: 0.25em;
+    border: dotted 1px #a1a1a1;
+    border-radius: .5em;
+    padding: .5em 1em;
+    font-size: 1.15em;
+    background-color: #F8FCFD;
+  }
+</style>

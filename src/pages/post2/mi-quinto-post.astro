@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export const frontmatter = {
+    title: "Laravel",
+    pubDate: "2026-03-11",
+    description: "Informacion sobre Laravel",
+    tags:["astro", "bloguear", "aprender en público", "conocimiento"],
+    image: {
+        url: "https://codersfree.nyc3.cdn.digitaloceanspaces.com/posts/laravel-que-es-y-por-que-deberias-aprenderlo.jpg",
+        alt: "Logo"
+    },
+    author: 'Sarasuadi',
+    authorBio: 'Desarrollador en formación y entusiasta de Astro.',
+    authorAvatar: 'https://avatars.githubusercontent.com/u/1234567'
+}
+import AuthorCard from '../../components/AuthorCard.astro';
+---
+
+
+<BaseLayout pageTitle={frontmatter.title}>
+   
+
+<p>{frontmatter.pubDate.toString().slice(0,10)}</p>
+  <p><em>{frontmatter.description}</em></p>
+<img src={frontmatter.image.url} width="300" alt={frontmatter.image.alt} />
+ 
+  <div class="tags">
+    {frontmatter.tags.map((tag) => (
+      <p class="tag"><a href={`/tags/${tag}`}>{tag}</a></p>
+    ))}
+  </div>
+  <h2>Astro</h2>
+  <p>
+  Laravel es un framework de código abierto para desarrollar aplicaciones y servicios web con PHP. Su filosofía es desarrollar código PHP de forma elegante y simple, evitando el "código espagueti". Fue creado en 2011 y 
+  tiene una gran influencia de frameworks como Ruby on Rails, Sinatra y ASP.NET MVC.
+  </p>
+
+  <AuthorCard 
+    name={frontmatter.author} 
+    bio={frontmatter.authorBio} 
+    avatar={frontmatter.authorAvatar}
+    twitter="astro_dev" 
+  />
+
+</BaseLayout>
+
+
+
+<style>
+  a {
+    color: #00539F;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    margin: 0.25em;
+    border: dotted 1px #a1a1a1;
+    border-radius: .5em;
+    padding: .5em 1em;
+    font-size: 1.15em;
+    background-color: #F8FCFD;
+  }
+</style>

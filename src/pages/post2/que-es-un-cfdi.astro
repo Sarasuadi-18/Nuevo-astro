@@ -1,0 +1,102 @@
+---
+
+import BasePost from "../../layouts/BasePost.astro";
+
+export const frontmatter = {
+  title: "¿Qué es un CFDI?",
+  pubDate: "2026-03-12",
+  description: "Explicación sencilla de qué es un CFDI.",
+  tags:["factucom","facturación","CFDI","SAT","sistemas"],
+  image: {
+    url: "https://images.squarespace-cdn.com/content/v1/612fcb99d60d66290264c345/b401c09d-f4d5-4f0c-b581-12488e07b89a/VITEL+CFDI+4.0",
+    alt: "Logo Factucom"
+  },
+  author: "Sarasuadi",
+  authorBio: "Desarrollador en formación y entusiasta de Astro.",
+  authorAvatar: "https://avatars.githubusercontent.com/u/1234567"
+};
+
+const headings = [
+  { id: "CFDI", text: "CFDI" },
+  { id: "de-que-esta-compuesto-un-cfdi", text: "¿De que esta compuesto un CFDI?" },
+  { id: "elementos-clave-que-contiene", text: "Elementos clave que contiene" },
+  { id: "version-actual", text: "Versión actual" },
+  { id: "tipos-comunes-de-cfdi", text: "Tipos comunes de CFDI" }
+];
+---
+
+
+<BasePost frontmatter={frontmatter}>
+
+ 
+<nav class="toc">
+  <h3>Contenido</h3>
+  <ul>
+    {headings.map((h)=>(
+      <li>
+        <a href={`#${h.id}`}>{h.text}</a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<h2 id="CFDI">CFDI</h2>
+
+<p>
+    Un CFDI son las siglas de Comprobante Fiscal Digital por Internet. En términos sencillos, es la factura electrónica legal en México.
+    A diferencia de una nota de remisión o un recibo simple, un CFDI está validado por el SAT (Servicio de Administración Tributaria) y tiene validez oficial para comprobar ingresos, egresos y el pago de impuestos.
+    
+</p>
+
+<h2 id="de-que-esta-compuesto-un-cfdi">¿De que esta compuesto un CFDI?</h2>
+
+<p>Cuando generas un CFDI (por ejemplo, en una plataforma como Factucom), se crean dos archivos inseparables:</p>
+
+<ul>
+    <li><strong>Archivo XML:</strong> Es el más importante. Es un archivo de código que contiene toda la información estructurada. Es el único que tiene valor legal. </li>
+    <li><strong>Archivo PDF:</strong> Es solo la representación visual del XML para que nosotros podamos leerlo fácilmente.</li>
+</ul>
+
+
+<h2 id="elementos-clave-que-contiene">Elementos clave que contiene</h2>
+
+<p>Para que un CFDI sea válido, debe incluir:</p>
+
+<ul>
+    <li><strong>RFC</strong> del emisor (quien vende o presta el servicio) y del receptor (quien paga).</li>
+    <li><strong>Sello Digital:</strong> Una firma electrónica que garantiza que el documento no ha sido alterado.</li>
+    <li><strong>UUID (Folio Fiscal):</strong> Es una cadena larga de letras y números (ej. 550e8400-e29b-41d4-a716...) que identifica esa factura de forma única en todo el país.</li>
+    <li><strong>Régimen Fiscal:</strong> El apartado de la ley bajo el cual tributas (como RESICO o Actividad Empresarial).</li>
+</ul>
+
+<h2 id="version-actual">Versión Actual (4.0)</h2>
+
+<p>Actualmente, la versión obligatoria es la 4.0. Esta versión requiere datos muy específicos que deben coincidir exactamente con la Constancia de Situación Fiscal del cliente:</p>
+
+<ul>
+    <li>Nombre o Razón Social (en mayúsculas y sin el régimen societario como "S.A. de C.V.").</li>
+    <li>Código Postal del domicilio fiscal.</li>
+    <li>Uso del CFDI (para qué va a usar el cliente esa factura).</li>
+</ul>
+
+<h2 id="tipos-comunes-de-cfdi">Tipos comunes de CFDI:</h2>
+
+<ul>
+    <li><strong>Ingreso:</strong> Facturas por ventas, honorarios o servicios prestados. </li>
+    <li><strong>Egreso:</strong> Notas de crédito (devoluciones o descuentos).</li>
+    <li><strong>Nomina:</strong> El recibo de sueldo que dan las empresas a sus empleados.</li>
+    <li><strong>Pago:</strong> Comprobante que emites cuando recibes el dinero de una factura que fue "pago en parcialidades".</li>
+</ul>
+</BasePost>
+
+
+<style>
+
+.toc{
+  background:#f7f7f7;
+  padding:16px;
+  border-radius:8px;
+  margin-bottom:30px;
+}
+
+</style>

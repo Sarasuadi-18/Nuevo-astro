@@ -1,9 +1,10 @@
 ---
 import BaseLayout from './BaseLayout.astro'
-import AuthorCard from '../components/AuthorCard.astro'; // 1. Importas
+import AuthorCard from '../components/AuthorCard.astro';
 const { frontmatter } = Astro.props;
 
 ---
+
 <BaseLayout pageTitle={frontmatter.title}>
   
     
@@ -22,8 +23,9 @@ const { frontmatter } = Astro.props;
     name={frontmatter.author} 
     bio={frontmatter.authorBio} 
     avatar={frontmatter.authorAvatar}
-    twitter="astro_dev"
+    twitter="astro_dev" 
   />
+
 </BaseLayout>
 
 

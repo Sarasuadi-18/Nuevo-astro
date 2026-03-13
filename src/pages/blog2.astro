@@ -1,22 +1,32 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const allPosts = await Astro.glob('./posts/*.md');
-const pageTitle = "Mi Blog de Aprendizaje";
+// Importamos los archivos .astro de la carpeta post2
+const allPosts = Object.values(import.meta.glob('./post2/*.astro', { eager: true }));
+const pageTitle = "Mi Blog 2 de Aprendizaje";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <p class="intro-text">Aquí es donde publicaré sobre mi viaje de aprendizaje Astro.</p>
   
   <div class="posts-grid">
-    {allPosts.map((post) => (
+    {allPosts.map((post: any) => (
       <a href={post.url} class="post-card">
-        <div class="post-image">
-          <img src={post.frontmatter.image.url} alt={post.frontmatter.image.alt} />
-        </div>
+        {/* Verificamos si existe la imagen en el frontmatter antes de renderizar */}
+        {post.frontmatter.image && (
+          <div class="post-image">
+            <img src={post.frontmatter.image.url} alt={post.frontmatter.image.alt} />
+          </div>
+        )}
+        
         <div class="post-content">
           <span class="post-date">{post.frontmatter.pubDate.toString().slice(0,10)}</span>
+          
           <h2 class="post-title">{post.frontmatter.title}</h2>
-          <p class="post-description">{post.frontmatter.description}</p>
+          
+          {post.frontmatter.description && (
+            <p class="post-description">{post.frontmatter.description}</p>
+          )}
+          
           <span class="post-link">Leer más →</span>
         </div>
       </a>
@@ -32,7 +42,6 @@ const pageTitle = "Mi Blog de Aprendizaje";
     margin-bottom: 3rem;
   }
 
-  /* Contenedor tipo Grid (como el de Factus) */
   .posts-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -40,7 +49,6 @@ const pageTitle = "Mi Blog de Aprendizaje";
     padding: 1rem 0;
   }
 
-  /* Estilo de la Tarjeta */
   .post-card {
     background: white;
     border: 1px solid #e2e8f0;
@@ -51,12 +59,13 @@ const pageTitle = "Mi Blog de Aprendizaje";
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     display: flex;
     flex-direction: column;
+    height: 100%;
   }
 
   .post-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.1);
-    border-color: #6366f1; /* Color azul de acento */
+    border-color: #6366f1;
   }
 
   .post-image img {
@@ -91,6 +100,7 @@ const pageTitle = "Mi Blog de Aprendizaje";
     font-size: 0.95rem;
     color: #64748b;
     margin-bottom: 1.5rem;
+    /* Truncar texto a 3 líneas */
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
